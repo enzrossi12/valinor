@@ -1,66 +1,68 @@
-Kanban Field - Sistema de Gerenciamento de Tarefas
-Descrição do Projeto
-O Kanban Field é uma aplicação web desenvolvida para o gerenciamento de tarefas através de um quadro dinâmico. O sistema permite a organização de fluxos de trabalho permitindo que o usuário crie tarefas, organize colunas de forma personalizada e utilize funcionalidades de arrastar e soltar (Drag and Drop) para movimentar itens e reordenar o próprio quadro.
+# Kanban Field — Sistema de Gerenciamento de Tarefas
 
-Tecnologias Utilizadas
-Frontend
-Angular 21: Utilização de Standalone Components para uma arquitetura moderna.
+![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-Angular CDK: Implementação de Drag and Drop para tarefas e colunas.
+> [!IMPORTANT]
+> **Vídeo de Demonstração:** https://jam.dev/c/5d58659b-7a4b-444d-b9f9-433d5cd4c5b3
 
-Sass (SCSS): Estilização avançada com variáveis e seletores aninhados.
+## Descrição do Projeto
 
-TypeScript: Garantia de tipagem e segurança no desenvolvimento.
+Este projeto foi desenvolvido como um desafio técnico para criar um quadro Kanban funcional e intuitivo. A ideia principal foi construir uma ferramenta onde o usuário possa organizar suas tarefas diárias de um jeito simples, podendo criar novos cards, organizar as colunas conforme a sua necessidade e, claro, arrastar as tarefas entre as etapas do processo. 
 
-Backend
-NestJS: Framework Node.js para a construção de uma API escalável e eficiente.
+Durante o desenvolvimento, foquei bastante em garantir que a interface fosse rápida e que as interações de "arrastar e soltar" (Drag and Drop) funcionassem bem tanto para as tarefas quanto para a reordenação das próprias colunas, trazendo uma experiência de uso mais fluida.
 
-TypeScript: Utilizado para definição de DTOs e serviços.
+---
 
-TypeORM/Prisma: Integração com banco de dados para persistência das tarefas.
+## Tecnologias e Ferramentas
 
-Funcionalidades
-CRUD de Tarefas: Criação, leitura, edição de título e exclusão de tarefas.
+### Frontend
+* **Angular 18+**: Arquitetura baseada em Standalone Components.
+* **Angular CDK**: Gerenciamento de interações de Drag and Drop.
+* **Sass (SCSS)**: Modularização de estilos e layout responsivo.
 
-Colunas Dinâmicas: Adição de novas colunas ao quadro e edição de seus nomes.
+### Backend
+* **NestJS**: Estrutura de API escalável e organizada.
+* **Armazenamento**: Gestão de dados em memória (Arrays) para esta versão do desafio.
+* **TypeScript**: Tipagem robusta em toda a aplicação.
 
-Interatividade: Reordenação horizontal de colunas e movimentação vertical/horizontal de tarefas.
+---
 
-Persistência: Integração com API para salvar o estado das tarefas.
+## Funcionalidades Principais
 
-Otimização de UX: Resposta imediata em cliques e ações de interface.
+| Recurso | Descrição |
+| :--- | :--- |
+| **Gestão de Tarefas** | CRUD completo (Criação, Leitura, Edição e Exclusão). |
+| **Colunas Dinâmicas** | Liberdade para adicionar e renomear colunas em tempo real. |
+| **Interatividade** | Reordenação horizontal de colunas e movimentação vertical de cards. |
+| **Otimização de UX** | Tratamento de eventos para evitar conflitos entre o "arrastar" e o "clicar". |
 
-Como Executar o Projeto
-Pré-requisitos
-Node.js (versão 18 ou superior)
+---
 
-Angular CLI
+## Como Executar o Projeto
 
-Gerenciador de pacotes npm
+### Pré-requisitos
+* **Node.js**: Versão 18 ou superior.
+* **Angular CLI**: Instalado globalmente (`npm install -g @angular/cli`).
 
-Instalação do Backend
-Navegue até a pasta do servidor: cd backend
+### Configuração do Backend
+1. Acesse o diretório: `cd backend`
+2. Instale as dependências: `npm install`
+3. Inicie o servidor: `npm run start:dev`
+4. A API estará rodando em: `http://localhost:3000`
 
-Instale as dependências: npm install
+### Configuração do Frontend
+1. Acesse o diretório: `cd frontend`
+2. Instale as dependências: `npm install`
+3. Inicie a aplicação: `ng serve`
+4. Acesse no navegador: `http://localhost:4200`
 
-Inicie o serviço: npm run start:dev
+---
 
-O servidor estará disponível em: http://localhost:3000
+## Estrutura de Arquivos Relevantes
 
-Instalação do Frontend
-Navegue até a pasta da aplicação: cd frontend
-
-Instale as dependências: npm install
-
-Inicie a aplicação: ng serve
-
-Acesse o sistema através do navegador: http://localhost:4200
-
-Estrutura de Arquivos Principal
-src/app/app.component.ts: Lógica principal do quadro e manipulação de eventos de drag.
-
-src/app/services/task.service.ts: Comunicação HTTP com a API NestJS.
-
-src/app/app.component.html: Estrutura do Kanban utilizando diretivas do Angular CDK.
-
-src/app/app.component.scss: Definições visuais e layout de colunas.
+* `src/app/app.component.ts`: Concentra a lógica de manipulação do estado do quadro e eventos de arrasto.
+* `src/app/services/task.service.ts`: Abstração das chamadas HTTP e integração com a API.
+* `src/app/app.component.html`: Estrutura do Kanban utilizando diretivas do Angular CDK.
+* `src/app/app.component.scss`: Estilização e definições de layout do container.
