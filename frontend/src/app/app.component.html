@@ -1,0 +1,75 @@
+<header class="main-header">
+  <h1>Kanban <span>Field</span></h1>
+</header>
+
+<main class="content-container">
+  <div class="header-actions">
+    <div class="add-task-container">
+      <input 
+        [(ngModel)]="newTaskTitle" 
+        placeholder="O que precisa ser feito?" 
+        (keyup.enter)="addTask()">
+      <button class="btn-add btn-blue" (mousedown)="addTask()">+ Tarefa</button>
+    </div>
+    <button class="btn-column btn-blue" (click)="addColumn()">+ Coluna</button>
+  </div>
+
+  <div 
+    class="kanban-container" 
+    cdkDropList 
+    cdkDropListOrientation="horizontal"
+    [cdkDropListData]="columns"
+    (cdkDropListDropped)="dropColumn($event)"
+    cdkDropListGroup>
+    
+    <div class="column" *ngFor="let col of columns" cdkDrag>
+      
+      <div class="column-header">
+        <div class="column-title-area">
+          <span class="drag-handle" cdkDragHandle>☰</span>
+          <h2 (dblclick)="editColumn(col)">{{ col.name }}</h2>
+        </div>
+        
+        <div class="column-actions">
+          <button (click)="editColumn(col)" class="btn-icon">✏️</button>
+          <span class="task-count">{{ col.tasks.length }}</span>
+        </div>
+      </div>
+      
+      <div 
+        cdkDropList 
+        [id]="col.id"
+        [cdkDropListData]="col.tasks" 
+        (cdkDropListDropped)="drop($event)" 
+        class="task-list">
+        
+        <div class="task-card" *ngFor="let item of col.tasks" cdkDrag>
+          <div class="task-content">
+            <strong>{{item.title}}</strong>
+            <p>{{item.description}}</p>
+          </div>
+          
+          <div class="task-actions">
+            <button 
+              (click)="$event.stopPropagation(); editTask(item)" 
+              (mousedown)="$event.stopPropagation()"
+              class="btn-edit" 
+              title="Editar">
+              ✏️
+            </button>
+  
+            <button 
+              (click)="$event.stopPropagation(); deleteTask(col, item)" 
+              (mousedown)="$event.stopPropagation()"
+              class="btn-delete" 
+              title="Excluir">
+              🗑️
+            </button>
+          </div>
+        </div>
+
+        <div class="empty-label" *ngIf="col.tasks.length === 0">
+          Nenhuma tarefa aqui
+        </div>
+      </div>
+    </div> </div> </main>
